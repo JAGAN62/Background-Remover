@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 from rembg import remove
 from PIL import Image
 import io, base64
+import os
+
 
 app = Flask(__name__)
 
@@ -24,5 +26,7 @@ def index():
     return render_template("index.html", image_data=image_data)
 
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Render gives PORT env var
+    app.run(host="0.0.0.0", port=port, debug=False)
