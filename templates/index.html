@@ -82,7 +82,6 @@
       <div class="preview" id="previewContainer"></div>
       <button type="submit">Remove Background</button>
     </form>
-
     {% if image_data %}
       <div class="result_image">
         <img src="data:image/png;base64,{{ image_data }}" alt="Processed Image"/>
@@ -92,9 +91,7 @@
         </a>
       </div>
     {% endif %}
-
   </div>
-
   <script>
     function previewImage(event) {
       const previewContainer = document.getElementById("previewContainer");
