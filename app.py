@@ -3,8 +3,6 @@ from rembg import remove
 from PIL import Image
 import io, base64
 import os
-
-
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
