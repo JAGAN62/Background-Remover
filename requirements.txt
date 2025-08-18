@@ -1,5 +1,4 @@
-Flask==3.0.2
-rembg==2.0.67
-onnxruntime
-Pillow
+flask
+rembg
+pillow
 gunicorn
