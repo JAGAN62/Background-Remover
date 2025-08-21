@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request
 from rembg import remove
 from PIL import Image
 import io, base64, os
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', 'your-secret-key-here')
+app.secret_key = os.environ.get('SECRET_KEY', 'Background-Remover-2025')
 
 # Configuration
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
@@ -21,14 +21,6 @@ def validate_image(file):
     
     if not allowed_file(file.filename):
         return False, "Invalid file type. Please upload PNG, JPG, JPEG, GIF, or WEBP files."
-    
-    # Check file size (approximate)
-    file.seek(0, os.SEEK_END)
-    file_size = file.tell()
-    file.seek(0)  # Reset file pointer
-    
-    if file_size > MAX_FILE_SIZE:
-        return False, "File too large. Maximum size is 10MB."
     
     return True, "Valid file"
 
@@ -85,5 +77,6 @@ def internal_error(e):
     return render_template("index.html", error_message="Internal server error. Please try again."), 500
 
 if __name__ == "__main__":
+    # CRITICAL: Proper port binding for Render.com
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
