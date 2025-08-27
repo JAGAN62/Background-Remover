@@ -122,19 +122,19 @@
 </head>
 <body>
   <div class="container">
-    <h1>🎨 Background Remover</h1>
+    <h1>Background Remover</h1>
     
     {% if error_message %}
       <div class="error">
-        ⚠️ {{ error_message }}
+        {{ error_message }}
       </div>
     {% endif %}
     
     <form method="post" enctype="multipart/form-data" id="uploadForm">
       <input type="file" name="image" accept="image/*" required onchange="previewImage(event)" id="fileInput">
-      <div class="file-info">
+      <!-- <div class="file-info">
         Supported formats: PNG, JPG, JPEG, GIF, WEBP (Max: 10MB)
-      </div>
+      </div> -->
       <div class="preview" id="previewContainer"></div>
       
       <div class="loading" id="loadingIndicator">
@@ -142,16 +142,16 @@
         Processing image... Please wait
       </div>
       
-      <button type="submit" id="submitButton">🚀 Remove Background</button>
+      <button type="submit" id="submitButton">Remove Background</button>
     </form>
     
     {% if image_data %}
       <div class="result_image">
-        <h3>✨ Background Removed!</h3>
+        <h3>Background Removed!</h3>
         <img src="data:image/png;base64,{{ image_data }}" alt="Processed Image"/>
         <br>
         <a href="data:image/png;base64,{{ image_data }}" download="background_removed.png" class="download-button">
-          💾 Download Image
+          Download Image
         </a>
       </div>
     {% endif %}
