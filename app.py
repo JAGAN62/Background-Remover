@@ -3,6 +3,7 @@ from rembg import remove
 from PIL import Image
 import io, base64
 import os
+
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
@@ -23,7 +24,10 @@ def index():
 
     return render_template("index.html", image_data=image_data)
 
-
+# ✅ Health check route for Render
+@app.route("/health")
+def health():
+    return "OK", 200
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # Render gives PORT env var
